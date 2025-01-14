@@ -5,9 +5,11 @@ using UnityEngine;
 public class RandomizedDepthFirst : MazeGenerator
 {
     private List<Cell> stack = new();
+    private Vector3 lastOffset;
 
     [SerializeField] private Material visited;
     [SerializeField] private Material selected;
+    [SerializeField] private Material inStack;
 
     public async void Generate()
     {
@@ -30,13 +32,23 @@ public class RandomizedDepthFirst : MazeGenerator
 
             Vector3 offset = rdmCell.transform.position - cell.transform.position;
 
+            int tries = 3;
+            while(offset == lastOffset && tries > 0)
+            {
+                rdmCell = unvisitedNeighbours[Random.Range(0, unvisitedNeighbours.Count)];
+                offset = rdmCell.transform.position - cell.transform.position;
+                tries--;
+            }
+
+            lastOffset = offset;
+
             Wall wall = walls.Find(x => x.transform.position == cell.transform.position + (offset * 0.5f));
 
             wall.Open();
 
             stack.Add(cell);
 
-            cell.SetMaterial(visited);
+            cell.SetMaterial(inStack);
             rdmCell.SetMaterial(selected);
 
             await Search(rdmCell);
@@ -54,6 +66,7 @@ public class RandomizedDepthFirst : MazeGenerator
     {
         await Task.Delay(500);
 
+        cell.SetMaterial(visited);
         stack.Remove(cell);
 
         List<Cell> unvisitedNeighbours = cell.GetAdjecentCells(cells).FindAll(x => x.visited == false);

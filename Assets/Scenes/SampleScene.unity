@@ -412,7 +412,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Prims Algorithm
+  m_Text: Prim
 --- !u!222 &290493095
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1555,7 +1555,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Depth First
+  m_Text: Depth First Search
 --- !u!222 &1040109343
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1612,8 +1612,9 @@ MonoBehaviour:
   cell: {fileID: 5136454980801688983, guid: e7adc59b90c2bdb40afc7a113fdd5d29, type: 3}
   cells: []
   walls: []
-  visited: {fileID: 2100000, guid: b439818100577ee499dd25a33023ef44, type: 2}
+  visited: {fileID: 2100000, guid: 1e2d6ab6249adad4ea4bff5bcbb32647, type: 2}
   selected: {fileID: 2100000, guid: 5468081564e0ea64f970d99f0de6168a, type: 2}
+  inStack: {fileID: 2100000, guid: 627742a23e535e8469e88762bb4ea930, type: 2}
 --- !u!1 &1162321262
 GameObject:
   m_ObjectHideFlags: 0
@@ -1710,6 +1711,7 @@ MonoBehaviour:
   selected: {fileID: 2100000, guid: 5468081564e0ea64f970d99f0de6168a, type: 2}
   inList: {fileID: 2100000, guid: b1d63de06dc6e834089df003a18300a4, type: 2}
   notSelected: {fileID: 2100000, guid: ee7f1c6cb2748e74ab4d94fc17f3705d, type: 2}
+  visited: {fileID: 2100000, guid: 4e94acbd227437149943780e05193ae3, type: 2}
 --- !u!1 &1925021318
 GameObject:
   m_ObjectHideFlags: 0

@@ -17,9 +17,14 @@ public class KruskalsMaze : MazeGenerator
 
     private async Task KruskalGeneration()
     {
-        foreach (var cell in cells)
+        for(int i = 0; i < cells.Count; i++)
         {
-            sets.Add(new() { cell });
+            float val = (float)i / (float)cells.Count;
+            Debug.Log(val);
+            Color c = new(val, val, val);
+            Debug.Log(c.r);
+            cells[i].SetMaterial(c);
+            sets.Add(new() { cells[i] });
         }
 
         List<Wall> _walls = new List<Wall>();
@@ -54,8 +59,13 @@ public class KruskalsMaze : MazeGenerator
                 List<Cell> set1 = sets.Find(x => x.Contains(cellLeft));
                 List<Cell> set2 = sets.Find(x => x.Contains(cellRight));
 
+                Color left = cellLeft.GetColor();
+                Color right = cellRight.GetColor();
+
                 if (set1 != set2)
                 {
+
+
                     List<Cell> newSet = new();
                     newSet.AddRange(set1);
                     newSet.AddRange(set2);
@@ -63,6 +73,13 @@ public class KruskalsMaze : MazeGenerator
                     sets.Remove(set2);
                     sets.Add(newSet);
                     wall.Open();
+
+                    float val = (left.r + right.r) / 2;
+
+                    for(int i = 0; i < newSet.Count; i++)
+                    {
+                        newSet[i].SetMaterial(new Color(val, val, val));
+                    }
                 }
             }
 

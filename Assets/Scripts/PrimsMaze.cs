@@ -9,6 +9,7 @@ public class PrimsMaze : MazeGenerator
     [SerializeField] private Material selected;
     [SerializeField] private Material inList;
     [SerializeField] private Material notSelected;
+    [SerializeField] private Material visited;
 
     public async void Generate()
     {
@@ -22,6 +23,7 @@ public class PrimsMaze : MazeGenerator
         Cell rdmCell = cells[Random.Range(0, cells.Count)];
 
         rdmCell.visited = true;
+        rdmCell.SetMaterial(visited);
 
         List<Wall> _walls = new();
         _walls.AddRange(walls);
@@ -51,8 +53,10 @@ public class PrimsMaze : MazeGenerator
 
             Cell nextCell = rdmWall.IsValid(cells);
 
+
             if (nextCell != null)
             {
+                nextCell.SetMaterial(visited);
                 nextCell.visited = true;
                 rdmWall.Open();
                 partOfMazeWalls.AddRange(nextCell.GetAdjecentWalls(_walls));

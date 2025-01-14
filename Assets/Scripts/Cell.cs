@@ -19,6 +19,16 @@ public class Cell : MonoBehaviour
         meshRenderer.material = mat;
     }
 
+    public void SetMaterial(Color color)
+    {
+        meshRenderer.material.color = color;
+    }
+
+    public Color GetColor()
+    {
+        return meshRenderer.material.color;
+    }
+
     public void Init(List<Wall> walls)
     {
         AddWall(up, walls);
