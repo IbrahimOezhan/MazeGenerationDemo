@@ -33,7 +33,7 @@ public class RandomizedDepthFirst : MazeGenerator
             Vector3 offset = rdmCell.transform.position - cell.transform.position;
 
             int tries = 3;
-            while(offset == lastOffset && tries > 0)
+            while (offset == lastOffset && tries > 0)
             {
                 rdmCell = unvisitedNeighbours[Random.Range(0, unvisitedNeighbours.Count)];
                 offset = rdmCell.transform.position - cell.transform.position;

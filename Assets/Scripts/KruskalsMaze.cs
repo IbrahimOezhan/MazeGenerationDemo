@@ -17,7 +17,7 @@ public class KruskalsMaze : MazeGenerator
 
     private async Task KruskalGeneration()
     {
-        for(int i = 0; i < cells.Count; i++)
+        for (int i = 0; i < cells.Count; i++)
         {
             float val = (float)i / (float)cells.Count;
             Debug.Log(val);
@@ -39,7 +39,7 @@ public class KruskalsMaze : MazeGenerator
         while (_walls.Count > 0)
         {
 
-            foreach(Wall _wall in walls)
+            foreach (Wall _wall in walls)
             {
                 _wall.SetMaterial(notSelected);
             }
@@ -76,7 +76,7 @@ public class KruskalsMaze : MazeGenerator
 
                     float val = (left.r + right.r) / 2;
 
-                    for(int i = 0; i < newSet.Count; i++)
+                    for (int i = 0; i < newSet.Count; i++)
                     {
                         newSet[i].SetMaterial(new Color(val, val, val));
                     }
